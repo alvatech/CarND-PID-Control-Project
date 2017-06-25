@@ -2,6 +2,18 @@
 Self-Driving Car Engineer Nanodegree Program
 
 ---
+## Reflections
+* Proportional Control: P component is proportional to the CTE (cross track error). This is the major component which is responsible for steering the Car into center depending on how far the car is from center line. This component just depends on the present CTE only. If we use P controller only then Car will overshoot the center line and then start correcting itself resulting in oscillation.
+
+* Integral Control: Integral component depends on sum of all previous errors. This is a backward looking controller which helps in dealing with any steering bias.
+
+* Differential Control: Differential component helps to reduce the oscillation caused by P controller. This is proportional to the differential of CTE. The controller will reduce the steering angle as the car moves closer to the center, there by not allowing it to overshoot.
+
+#### Hyper parameters
+The parameters are tuned manually. I started with a low Kp and Kd with Ki set to zero. Played around with different values and with Kp = 0.5 and Kd of 10.0 the car completely stayed within the track. At the end added a small amount of Ki.
+
+##### Future work:
+Tune the hyper parameters using twiddle algorithm
 
 ## Dependencies
 
@@ -19,7 +31,7 @@ Self-Driving Car Engineer Nanodegree Program
   * Run either `./install-mac.sh` or `./install-ubuntu.sh`.
   * If you install from source, checkout to commit `e94b6e1`, i.e.
     ```
-    git clone https://github.com/uWebSockets/uWebSockets 
+    git clone https://github.com/uWebSockets/uWebSockets
     cd uWebSockets
     git checkout e94b6e1
     ```
@@ -33,7 +45,7 @@ There's an experimental patch for windows in this [PR](https://github.com/udacit
 1. Clone this repo.
 2. Make a build directory: `mkdir build && cd build`
 3. Compile: `cmake .. && make`
-4. Run it: `./pid`. 
+4. Run it: `./pid`.
 
 ## Editor Settings
 
